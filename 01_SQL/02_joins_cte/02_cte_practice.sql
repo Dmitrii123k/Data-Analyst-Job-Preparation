@@ -3,7 +3,7 @@
 -- CTE, SEGMENTATION AND WINDOW FUNCTIONS
 -- =========================================================
 
--- STEP 1. Сегментация клиентов
+--  1. Сегментация клиентов
 WITH customer_metrics AS (
     SELECT
         "Customer ID" AS customer_id,
@@ -40,7 +40,7 @@ FROM customer_segments
 GROUP BY customer_segment
 ORDER BY revenue DESC;
 
--- STEP 2. Проверяем границы сегментов
+--  2. Проверяем границы сегментов
 WITH customer_metrics AS (
     SELECT
         "Customer ID" AS customer_id,
@@ -77,7 +77,7 @@ FROM customer_segments
 GROUP BY customer_segment
 ORDER BY min_revenue DESC;
 
--- STEP 3. Доля клиентов и выручки по сегментам
+--  3. Доля клиентов и выручки по сегментам
 WITH customer_metrics AS (
     SELECT
         "Customer ID" AS customer_id,
@@ -127,7 +127,7 @@ SELECT
 FROM segment_summary
 ORDER BY revenue DESC;
 
--- STEP 4. Ранжирование клиентов по выручке
+--  4. Ранжирование клиентов по выручке
 WITH customer_metrics AS (
     SELECT
         "Customer ID" AS customer_id,
@@ -162,7 +162,7 @@ FROM customer_ranked
 WHERE customer_rank <= 20
 ORDER BY customer_rank;
 
--- STEP 5. Месячная выручка
+--  5. Месячная выручка
 SELECT
     DATE_TRUNC('month', "InvoiceDate") AS month,
     COUNT(DISTINCT "Invoice") AS orders,
@@ -174,7 +174,7 @@ FROM sales
 GROUP BY DATE_TRUNC('month', "InvoiceDate")
 ORDER BY month;
 
--- STEP 6. Месячная выручка и предыдущий месяц
+--  6. Месячная выручка и предыдущий месяц
 WITH monthly_sales AS (
     SELECT
         DATE_TRUNC('month', "InvoiceDate") AS month,
@@ -206,7 +206,7 @@ SELECT
 FROM monthly_growth
 ORDER BY month;
 
--- STEP 7. MoM growth
+--  7. MoM growth
 WITH monthly_sales AS (
     SELECT
         DATE_TRUNC('month', "InvoiceDate") AS month,
@@ -246,7 +246,7 @@ SELECT
 FROM monthly_growth
 ORDER BY month;
 
--- STEP 8. Финальный месячный анализ
+-- 8. Финальный месячный анализ
 WITH monthly_sales AS (
     SELECT
         DATE_TRUNC('month', "InvoiceDate") AS month,
@@ -286,7 +286,7 @@ SELECT
 FROM monthly_analysis
 ORDER BY month;
 
--- STEP 9. Финальная проверка KPI
+-- 9. Финальная проверка KPI
 SELECT
     COUNT(*) AS total_rows,
     COUNT(DISTINCT "Invoice") AS total_orders,

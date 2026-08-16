@@ -3,7 +3,7 @@
 -- CUSTOMER ANALYSIS AND DATA QUALITY
 -- =========================================================
 
--- STEP 1. Проверяем количество клиентов
+--  1. Проверяем количество клиентов
 SELECT
     COUNT(*) AS customer_count
 FROM (
@@ -14,7 +14,7 @@ FROM (
     GROUP BY "Customer ID"
 ) t;
 
--- STEP 2. Проверяем все заказы и заказы с Customer ID
+--  2. Проверяем все заказы и заказы с Customer ID
 SELECT
     COUNT(DISTINCT "Invoice") AS all_orders,
     COUNT(DISTINCT CASE
@@ -23,7 +23,7 @@ SELECT
     END) AS orders_with_customer
 FROM sales;
 
--- STEP 3. Строим метрики клиентов
+--  3. Строим метрики клиентов
 -- NULL и пустая строка '' считаются отдельно.
 -- NULLIF(TRIM()) превращает пустую строку в NULL.
 WITH customer_metrics AS (
@@ -41,7 +41,7 @@ SELECT
 FROM customer_metrics
 ORDER BY total_revenue DESC;
 
--- STEP 4. Проверяем пустые Customer ID
+-- 4. Проверяем пустые Customer ID
 SELECT
     COUNT(*) AS empty_customer_rows,
     COUNT(DISTINCT "Invoice") AS empty_customer_orders,
@@ -49,7 +49,7 @@ SELECT
 FROM sales
 WHERE TRIM("Customer ID") = '';
 
--- STEP 5. Проверяем конкретного клиента
+--  5. Проверяем конкретного клиента
 SELECT
     "Customer ID",
     COUNT(DISTINCT "Invoice") AS orders_count,
@@ -61,7 +61,7 @@ FROM sales
 WHERE "Customer ID" = '13108.0'
 GROUP BY "Customer ID";
 
--- STEP 6. Сравниваем AVG и MEDIAN
+--  6. Сравниваем AVG и MEDIAN
 WITH customer_metrics AS (
     SELECT
         "Customer ID" AS customer_id,
@@ -79,7 +79,7 @@ SELECT
     ) AS median_customer_revenue
 FROM customer_metrics;
 
--- STEP 7. Финальные customer KPI
+--  7. Финальные customer KPI
 WITH customer_metrics AS (
     SELECT
         "Customer ID" AS customer_id,
