@@ -1,0 +1,19 @@
+-- Mapping источника clean_online_retail → DWH
+-- Клиенты
+-- clean_online_retail."Customer ID" → dim_customer.customer_id
+-- Товары
+-- clean_online_retail.StockCode → dim_product.stock_code
+-- clean_online_retail.Description → dim_product.description
+-- Даты
+-- clean_online_retail.InvoiceDate → dim_date.date_id
+-- Страны
+-- clean_online_retail.Country → dim_country.country_name
+-- Факты продаж
+-- clean_online_retail.Invoice → fact_sales.invoice_no
+-- clean_online_retail."Customer ID" → fact_sales.customer_id
+-- clean_online_retail.StockCode → fact_sales.product_id через lookup
+-- clean_online_retail.InvoiceDate → fact_sales.date_id
+-- clean_online_retail.Country → fact_sales.country_id через lookup
+-- clean_online_retail.Quantity → fact_sales.quantity
+-- clean_online_retail.Price → fact_sales.unit_price
+-- Quantity * Price → fact_sales.revenue
