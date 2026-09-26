@@ -394,6 +394,13 @@ Error rate функций находится в диапазоне:
 При этом отсутствие статистической значимости не означает отсутствия бизнес-различий. Это означает, что имеющихся статистических оснований недостаточно для подтверждения зависимости в рамках проведённых тестов.
 
 ---
+## 📊 Dashboard Preview
+
+### Executive Overview
+![Executive Overview](Dashboard/dashboard_01.png)
+
+### Revenue & Churn Analysis
+![Revenue & Churn Analysis](Dashboard/dashboard_02.png)
 
 # Key Findings
 
