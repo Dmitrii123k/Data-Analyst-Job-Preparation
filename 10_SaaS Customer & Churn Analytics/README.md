@@ -396,11 +396,13 @@ Error rate функций находится в диапазоне:
 ---
 ## 📊 Dashboard Preview
 
-### Executive Overview
-![Executive Overview](Dashboard/dashboard_01.png)
+### SaaS Customer & Churn Analytics — Part 1
 
-### Revenue & Churn Analysis
-![Revenue & Churn Analysis](Dashboard/dashboard_02.png)
+![SaaS Customer & Churn Analytics — Part 1](Dashboard/dashboard_01.png)
+
+### SaaS Customer & Churn Analytics — Part 2
+
+![SaaS Customer & Churn Analytics — Part 2](Dashboard/dashboard_02.png)
 
 # Key Findings
 
